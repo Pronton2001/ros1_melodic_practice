@@ -1,0 +1,11 @@
+/build/*
+/devel/*
+~/src/beg*
+~/src/path_planner
+*.make
+CMake*
+*.catkin_*
+*.pgm
+*.yaml
+*.bag
+*.xml

@@ -1,0 +1,21 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="slam_methods" default="gmapping" doc="slam type [gmapping, cartographer, hector, karto, frontier_exploration]"/>
+  <arg name="open_rviz" default="true"/>
+
+  <!-- R2D2 -->
+  <include file="$(find urdf_sim_tutorial)/launch/r2d2-remote.launch">
+    <arg name="model" default="$(find urdf_sim_tutorial)/urdf/13-diffdrive.urdf.xacro"/>
+  </include>
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" required="true" />
+  <!-- <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" required="true" /> -->
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find turtlebot3_slam)/rviz/turtlebot3_$(arg slam_methods).rviz"/>
+  </group>
+</launch>
+
+<!-- Run rosbag play -\-clock r2d2_2.bag -->
