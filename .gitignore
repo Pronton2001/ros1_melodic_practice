@@ -9,3 +9,4 @@ CMake*
 *.yaml
 *.bag
 *.xml
+src/beginner_tutorials/scripts/tf.log
